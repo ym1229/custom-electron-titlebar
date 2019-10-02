@@ -36,5 +36,5 @@ node_modules
 
 /example/*.js
 typings/
-lib/
+#lib/
 *.map

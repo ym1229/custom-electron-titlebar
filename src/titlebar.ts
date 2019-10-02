@@ -30,6 +30,10 @@ export interface TitlebarOptions extends MenubarOptions {
 	 */
 	backgroundColor: Color;
 	/**
+	 * The inactive background color of the titlebar.
+	 */
+	inactiveBackgroundColor: Color;
+	/**
 	 * The icon shown on the left side of the title bar.
 	 */
 	icon?: string;
@@ -81,6 +85,7 @@ export interface TitlebarOptions extends MenubarOptions {
 
 const defaultOptions: TitlebarOptions = {
 	backgroundColor: Color.fromHex('#444444'),
+	inactiveBackgroundColor: null,
 	iconsTheme: Themebar.win,
 	shadow: false,
 	menu: remote.Menu.getApplicationMenu(),
@@ -379,7 +384,7 @@ export class Titlebar extends Themebar {
 				removeClass(this.titlebar, 'inactive');
 			}
 
-			const titleBackground = this.isInactive ? this._options.backgroundColor.lighten(.3) : this._options.backgroundColor;
+			const titleBackground = this.isInactive ? (this._options.inactiveBackgroundColor ? this._options.inactiveBackgroundColor : this._options.backgroundColor.lighten(.3)) : this._options.backgroundColor;
 			this.titlebar.style.backgroundColor = titleBackground.toString();
 
 			if (titleBackground.isLighter()) {
