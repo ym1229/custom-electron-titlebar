@@ -80,7 +80,13 @@ export interface TitlebarOptions extends MenubarOptions {
 	 * When the close button is clicked, the window is hidden instead of closed.
 	 * *The default is false*
 	 */
-	hideWhenClickingClose?: boolean
+	hideWhenClickingClose?: boolean;
+	/**
+	 * Define if the window is draggable.
+	 * *The default is true*
+	 */
+	draggable?: boolean;
+
 }
 
 const defaultOptions: TitlebarOptions = {
@@ -94,7 +100,8 @@ const defaultOptions: TitlebarOptions = {
 	closeable: true,
 	enableMnemonics: true,
 	overflow: "auto",
-	hideWhenClickingClose: false
+	hideWhenClickingClose: false,
+	draggable: true
 };
 
 export class Titlebar extends Themebar {
@@ -202,7 +209,9 @@ export class Titlebar extends Themebar {
 			this.titlebar.style.boxShadow = `0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12)`;
 		}
 
-		this.dragRegion = append(this.titlebar, $('div.titlebar-drag-region'));
+		if (this._options.draggable) {
+			this.dragRegion = append(this.titlebar, $('div.titlebar-drag-region'));
+		}
 
 		// App Icon (Windows/Linux)
 		if (!isMacintosh && this._options.icon) {

@@ -58,6 +58,11 @@ export interface TitlebarOptions extends MenubarOptions {
      * *The default is false*
      */
     hideWhenClickingClose?: boolean;
+    /**
+     * Define if the window is draggable.
+     * *The default is true*
+     */
+    draggable?: boolean;
 }
 export declare class Titlebar extends Themebar {
     private titlebar;
