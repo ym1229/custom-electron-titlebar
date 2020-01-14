@@ -32,7 +32,7 @@ export interface TitlebarOptions extends MenubarOptions {
 	/**
 	 * The inactive background color of the titlebar.
 	 */
-	inactiveBackgroundColor: Color;
+	inactiveBackgroundColor?: Color;
 	/**
 	 * The icon shown on the left side of the title bar.
 	 */
